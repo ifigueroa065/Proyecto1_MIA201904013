@@ -1,6 +1,6 @@
 #include <iostream>
-
-int main()
-{
-    std::cout << "Hello World" << std::endl;
+#include "../lib/scanner.h"
+int main() {
+    scanner scan;
+    scan.start();
 }
