@@ -11,6 +11,9 @@
 
 using namespace std;
 
+
+// acá se hacen las definiciones de mi librería Disco
+
 class Disk{
     public:
         Disk();
@@ -22,8 +25,16 @@ class Disk{
             int after;
         } Transition;
 
-        void mkdisk(vector<string> tokens);
+
+        //funciones del disco
+
+        //[size,unit, path, f]
+        //separa los datos y los envía a la función que crea el disco
+        void mkdisk(vector<string> tokens); 
+
+        //esta función es la que crea el disco
         void makeDisk(string s, string f, string u, string p);
+
         void rmdisk(vector<string> context);
         void fdisk(vector<string> context);
         void generatepartition(string s, string u, string p, string t, string f, string n, string a);
