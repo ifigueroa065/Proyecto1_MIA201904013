@@ -1,10 +1,10 @@
 #include "../lib/scanner.h"
 #include "../lib/disco.h"
 #include "../lib/mount.h"
-// #include "../lib/report.h"
-// #include "../lib/filesystem.h"
-// #include "../lib/users.h"
-// #include "../lib/filemanager.h"
+#include "../lib/report.h"
+#include "../lib/filesystem.h"
+#include "../lib/users.h"
+#include "../lib/filemanager.h"
 #include <iostream>
 #include <stdlib.h>
 #include <locale>
@@ -17,10 +17,10 @@ using namespace std;
 
 Disk disco;
 Mount mount;
-// Report report;
-// Users user;
-// Shared shared;
-// FileManager filemanager;
+Report report;
+Users user;
+Shared shared;
+FileManager filemanager;
 bool logued = false;
 scanner::scanner()
 {
@@ -33,9 +33,9 @@ void Clear()
 void scanner::start()
 {
     system("clear");
-        cout << "------------------------------INGRESE UN COMANDO------------------------------\n" << endl;
-        cout << "--------------------------------exit para salir-------------------------------\n" << endl;
-        cout << ">>";
+        cout << "------------------------------@ifigueroa065------------------------------\n" << endl;
+        
+        cout << "$";
         while (true)
         {
             string texto;
@@ -52,9 +52,11 @@ void scanner::start()
             cout << "\nPresione Enter para continuar...." << endl;
             getline(cin,texto);
             Clear();
-            cout << "------------------------------INGRESE UN COMANDO------------------------------\n" << endl;
-            cout << "--------------------------------exit para salir-------------------------------\n" << endl;
-            cout << ">>";
+            cout << "_____________________________ @ifigueroa065 _____________________________\n" << endl;
+        
+            
+            
+            cout << "$";
         }
 }
     
@@ -66,7 +68,7 @@ void scanner::functions(string token, vector<string> tks)
         disco.mkdisk(tks); // [-size=10, -u=m, -path=/home/hola.dk]
     }else if(compare(token, "RMDISK")){
         cout << "FUNCION RMDISK" << endl;
-        //disco.rmdisk(tks);
+        disco.rmdisk(tks);
     }else if(compare(token, "FDISK")){
         cout << "FUNCION FDISK" << endl;
         disco.fdisk(tks);
@@ -75,72 +77,72 @@ void scanner::functions(string token, vector<string> tks)
         mount.mount(tks);
     }else if(compare(token, "UNMOUNT")){
         cout << "FUNCION *UNMOUNT" << endl;
-        //mount.unmount(tks);
+        mount.unmount(tks);
     }else if(compare(token, "MKFS")){
         cout << "FUNCION MKFS" << endl;
-        //FileSystem fileSystem = FileSystem(mount);
-        //fileSystem.mkfs(tks);
+        FileSystem fileSystem = FileSystem(mount);
+        fileSystem.mkfs(tks);
 
     }else if(compare(token, "LOGIN")){
         cout << "FUNCION LOGIN" << endl;
         if(logued){
-            //shared.handler("LOGIN", " ya existe una sesion abierta");
+            shared.handler("LOGIN", " ya existe una sesion abierta");
             return;
         }
-        //logued = user.login(tks,mount);
+        logued = user.login(tks,mount);
 
     }else if(compare(token, "LOGOUT")){
         cout << "FUNCION LOGOUT" << endl;
         if(!logued){
-        //    shared.handler("LOGOUT", " debe de iniciar sesion primero");
+            shared.handler("LOGOUT", " debe de iniciar sesion primero");
             return;
         }
-        //logued = user.logout();
+        logued = user.logout();
 
     }else if(compare(token, "MKGRP")){
         if(!logued){
-        //    shared.handler("MKGRP", " debe de iniciar sesion primero");
+        shared.handler("MKGRP", " debe de iniciar sesion primero");
             return;
         }
         cout << "FUNCION MKGRP" << endl;
-        //user.grp(tks,"MK");
+        user.grp(tks,"MK");
 
     }else if(compare(token, "RMGRP")){
         if(!logued){
-        //    shared.handler("RMGRP", " debe de iniciar sesion primero");
+            shared.handler("RMGRP", " debe de iniciar sesion primero");
             return;
         }
         cout << "FUNCION RMGRP" << endl;
-        //user.grp(tks,"RM");
+        user.grp(tks,"RM");
 
     }else if(compare(token, "MKUSR")){
         if(!logued){
-        //    shared.handler("MKUSR", " debe de iniciar sesion primero");
+        shared.handler("MKUSR", " debe de iniciar sesion primero");
             return;
         }
         cout << "FUNCION MKUSR" << endl;
-        //user.usr(tks,"MK");
+        user.usr(tks,"MK");
 
     }else if(compare(token, "RMUSR")){
         if(!logued){
-        //    shared.handler("RMUSR", " debe de iniciar sesion primero");
+        shared.handler("RMUSR", " debe de iniciar sesion primero");
             return;
         }
         cout << "FUNCION RMUSR" << endl;
-        //user.usr(tks,"RM");
+        user.usr(tks,"RM");
 
     }else if(compare(token, "MKDIR")){
         if(!logued){
-        //    shared.handler("MKDIR", " debe de iniciar sesion primero");
+        shared.handler("MKDIR", " debe de iniciar sesion primero");
             return;
         }
         string p;
         cout << "FUNCION MKDIR" << endl;
-        //Structs::Partition partition = mount.getmount(user.logged.id, &p);
-        //filemanager.mkdir(tks, partition, p);
+        Structs::Partition partition = mount.getmount(user.logged.id, &p);
+        filemanager.mkdir(tks, partition, p);
     }else if(compare(token, "REP")){
         cout << "FUNCION REPORTES" << endl;
-        //report.generar(tks, mount);
+        report.generar(tks, mount);
     }else if(compare(token, "EXEC")){
         cout << "FUNCION EXEC" << endl;
         funcion_excec(tks);
@@ -324,7 +326,7 @@ void scanner::excec(string path){
         string texto = i;
         string tk = token(texto);
         if(texto!=""){
-            if(compare(texto,"PAUSE")){
+            if(compare(texto,"pause")){
                 string pause;
                 respuesta("PAUSE","Presione enter para continuar...");
                 getline(cin,pause);

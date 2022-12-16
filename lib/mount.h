@@ -7,6 +7,8 @@
 #include "../lib/structs.h"
 #include "../lib/disco.h"
 
+//mount lib full
+
 using namespace std;
 
 class Mount
@@ -17,7 +19,7 @@ class Mount
     {
         char letter;
         char status = '0';
-        char name[16];
+        char name[16]; //change
     }MountedPartition;
 
     typedef struct _MD{
@@ -34,7 +36,7 @@ class Mount
     void unmount(string id);
     void listmount();
 
-    Structs::Partition getMount(string id, string *p);
+    Structs::Partition getmount(string id, string *p);
 
     private:
     Disk dsk;

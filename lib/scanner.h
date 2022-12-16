@@ -2,7 +2,9 @@
 #define SCANNER_H
 #include <vector>
 #include <string>
-// #include "../lib/disco.h"
+#include "../lib/disco.h"
+
+//scanner full
 
 using namespace std;
 

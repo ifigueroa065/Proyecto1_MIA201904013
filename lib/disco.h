@@ -10,7 +10,7 @@
 #include "../lib/shared.h"
 
 using namespace std;
-
+//función disco todo full
 
 // acá se hacen las definiciones de mi librería Disco
 
@@ -35,7 +35,9 @@ class Disk{
         //esta función es la que crea el disco
         void makeDisk(string s, string f, string u, string p);
 
-        void rmdisk(vector<string> context);
+        void rmdisk(vector<string> tokens);
+
+        
         void fdisk(vector<string> context);
         void generatepartition(string s, string u, string p, string t, string f, string n, string a);
         void deletepartition(string d, string p, string n);
