@@ -264,7 +264,7 @@ void Users::usr(vector<string> context, string action) {
                 required.erase(itr);
                 usr = current;
             }
-        } else if (shared.compare(id_, "pwd")) {
+        } else if (shared.compare(id_, "pass")) {
             if (count(required.begin(), required.end(), id_)) {
                 auto itr = find(required.begin(), required.end(), id_);
                 required.erase(itr);

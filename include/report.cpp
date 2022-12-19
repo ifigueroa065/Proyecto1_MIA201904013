@@ -115,7 +115,7 @@ void Report::mbr(string p, string id) {
                   "node [shape = plaintext];\n"
                   "general [label = <<table>\n"
                   "<tr><td COLSPAN = '2' BGCOLOR=\"#102027\"><font color=\"white\">MBR</font></td></tr>\n"
-                  "<tr><td BGCOLOR=\"#ff6f00\">NOMBRE</td><td BGCOLOR=\"#ff6f00\" >VALOR</td></tr>\n"
+                  "<tr><td BGCOLOR=\"#48D5D2\">NOMBRE</td><td BGCOLOR=\"#48D5D2\" >VALOR</td></tr>\n"
                   "<tr>\n"
                   "<td>mbr_tamaño</td>\n"
                   "<td>" +
@@ -185,7 +185,7 @@ void Report::mbr(string p, string id) {
                            "<tr><td COLSPAN = '2' BGCOLOR=\"#102027\"><font color=\"white\">EBR_" +
                            to_string(count + 1) +
                            "</font></td></tr>\n"
-                           "<tr><td BGCOLOR=\"#ff6f00\">NOMBRE</td><td BGCOLOR=\"#ff6f00\" >VALOR</td></tr>\n"
+                           "<tr><td BGCOLOR=\"#48D5D2\">NOMBRE</td><td BGCOLOR=\"#48D5D2\" >VALOR</td></tr>\n"
                            "<tr>\n"
                            "<td>part_status_" + to_string(count + 1) + "</td>\n"
                                                                        "<td>" +
