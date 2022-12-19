@@ -13,7 +13,6 @@ class scanner
 public:
     scanner();
     void start();
-    void pause();
     void functions(string token, vector<string> tks); //Recibe el comando y lista de instrucciones
     string token(string text);                      
     vector<string> split(string text, string text_split);

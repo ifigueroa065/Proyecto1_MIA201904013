@@ -24,7 +24,7 @@ bool Users::login(vector<string> context, Mount m) {
                 id = current;
         } else if (shared.compare(id_, "usuario") || shared.compare(id_, "usr")) {
                 usuario = current;
-        } else if (shared.compare(id_, "password") || shared.compare(id_, "pwd")) {
+        } else if (shared.compare(id_, "password") || shared.compare(id_, "pass")) {
                 password = current;
         }
     }
@@ -242,7 +242,7 @@ void Users::rmgrp(string n) {
 void Users::usr(vector<string> context, string action) {
     vector<string> required;
     if (shared.compare(action, "MK")) {
-        required = {"usr", "pwd", "grp"};
+        required = {"usr", "pass", "grp"};
     } else {
         required = {"usr"};
     }
