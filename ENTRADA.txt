@@ -1,5 +1,5 @@
 # ADMINISTRADOR DE DISCOS
-
+#exec -path=/home/isai/prueba.mia
 ______________________ MKDISK ______________________
 
 #Crea un disco de 3000 Kb en la carpeta home

@@ -33,7 +33,7 @@ void Clear()
 void scanner::start()
 {
     system("clear");
-        cout << "------------------------------@ifigueroa065------------------------------\n" << endl;
+        cout << "_____________________________ @ifigueroa065 _____________________________\n" << endl;
         
         cout << "$";
         while (true)

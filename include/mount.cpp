@@ -78,7 +78,7 @@ void Mount::mount(string p, string n) {
                         mounted[i].mpartitions[j].letter = alfabeto.at(j);
                         strcpy(mounted[i].mpartitions[j].name, n.c_str());
                         string re = to_string(i + 1) + alfabeto.at(j);
-                        shared.response("MOUNT", "se ha realizado correctamente el mount -id=65" + re);
+                        shared.response("MOUNT", "se ha realizado correctamente el mount -id=13" + re);
                         return;
                     }
                 }
@@ -94,7 +94,7 @@ void Mount::mount(string p, string n) {
                         mounted[i].mpartitions[j].letter = alfabeto.at(j);
                         strcpy(mounted[i].mpartitions[j].name, n.c_str());
                         string re = to_string(i + 1) + alfabeto.at(j);
-                        shared.response("MOUNT", "se ha realizado correctamente el mount -id=65" + re);
+                        shared.response("MOUNT", "se ha realizado correctamente el mount -id=13" + re);
                         return;
                     }
                 }
@@ -131,7 +131,7 @@ void Mount::unmount(vector<string> context) {
 
 void Mount::unmount(string id) {
     try {
-        if (!(id[0] == '6' && id[1] == '5')) {
+        if (!(id[0] == '1' && id[1] == '3')) {
             throw runtime_error("el primer identificador no es válido");
         }
         string past = id;
@@ -168,7 +168,7 @@ void Mount::unmount(string id) {
 
 Structs::Partition Mount::getmount(string id, string *p) {
 
-    if (!(id[0] == '6' && id[1] == '5')) {
+    if (!(id[0] == '1' && id[1] == '3')) {
         throw runtime_error("el primer identificador no es válido");
     }
     string past = id;

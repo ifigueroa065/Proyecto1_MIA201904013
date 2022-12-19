@@ -231,7 +231,7 @@ void Disk::rmdisk(vector<string> context){
             
             if (file != NULL)
             {
-                if(!scan.compare(path.substr(path.find_last_of(".") + 1),"dk")){
+                if(!scan.compare(path.substr(path.find_last_of(".") + 1),"dsk")){
                     scan.errores("RMDISK", "Extensión de archivo no valida");
                     return;
                 }
@@ -315,8 +315,8 @@ void Disk::fdisk(vector<string> context)
                 }
             } else if (shared.compare(id, "add")) {
                 add = current;
-                if (count(required.begin(), required.end(), "size")) {
-                    auto itr = find(required.begin(), required.end(), "size");
+                if (count(required.begin(), required.end(), "s")) {
+                    auto itr = find(required.begin(), required.end(), "s");
                     required.erase(itr);
                     size = current;
                 }
@@ -406,7 +406,7 @@ void Disk::generatepartition(string s,string u, string p, string t, string f, st
             rewind(file);
             fread(&disco, sizeof(disco),1,file);
         }else{
-            shared.handler("FDISK", "Este disco no existe :c");
+            shared.handler("FDISK", "__________Este disco no existe__________");
             return;
         }
         fclose(file);
@@ -486,11 +486,11 @@ void Disk::generatepartition(string s,string u, string p, string t, string f, st
                 fwrite(&ebr, sizeof(Structs::EBR), 1, bfile);
             }
             fclose(bfile);
-            shared.response("FDISK", "partición creada correctamente");
+            shared.response("FDISK", "partición Sucessfully");
         }
     }
     catch (invalid_argument &e) {
-        shared.handler("FDISK", "-size debe ser un entero");
+        shared.handler("FDISK", "-s debe ser un entero");
         return;
     }
     catch (exception &e) {
@@ -712,7 +712,7 @@ void Disk::logic(Structs::Partition partition, Structs::Partition ep, string p) 
             addLogic.part_start = nlogic.part_next;
             fseek(file, addLogic.part_start, SEEK_SET);
             fwrite(&addLogic, sizeof(Structs::EBR), 1, file);
-            shared.response("FDISK", "partición creada correctamente");
+            shared.response("FDISK", "partición Sucessfully");
             fclose(file);
             return;
         }
