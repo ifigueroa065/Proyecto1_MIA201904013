@@ -1,0 +1,194 @@
+#CREACION DE DISCOS
+mkdisk -s=20 -u=m -path=/home/archivos/Discos/Disco1.dsk
+Mkdisk -u=k -s=51200 -path=/home/archivos/DiscosDisco2.dsk -f=BF
+mkdisk -s=10 -path=/home/archivos/Discos/Disco3.dsk
+mkdisk -s=51200 -path="/home/archivos/Discos/mis archivos/Disco4.dsk" -u=K
+mkdisk -s=20 -path="/home/archivos/Discos/mis archivos/Disco5.dsk" -u=M -f=WF
+#Deberia dar error
+mkdisk -param=x -s=30 -path=/home/archivos/archivos/fase1/Disco.dsk
+
+#ELIMINACION DE DISCOS
+#El primero deberia dar error
+rmdisk -path=/home/archivos/Disco3.dsk
+rmdisk -path=/home/Discos/Disco3.dsk
+RMdisk -path="/home/archivos/Discos/mis archivos/Disco4.dsk"
+
+
+#CREACION DE PARTICION
+fdisk -type=P -u=K -name=Part1 -s=7680 -path=/home/archivos/Discos/Disco1.dsk -f=BF
+#MOUNT
+mount -path=/home/archivos/Discos/Disco1.dsk -name=Part1 #131a
+#CREACION DE SISTEMA DE ARCHIVOS
+mkfs -type=fast -id=131a -fs=3fs
+
+#------------------------REPORTES 1----------------
+rep -id=131a -path="/home/archivos/reportes/reporte1_sb.jpg" -name=sb
+rep -id=131a -path="/home/archivos/reportes/reporte1_tree.jpg" -name=tree
+pause
+
+#LOGIN
+login -usr=root -pass=123 -id=131a
+
+#CREACION DE GRUPOS
+mkgrp -name=usuarios
+mkgrp -name=adm
+mkgrp -name=mail
+mkgrp -name=news
+mkgrp -name=sys
+cat -file=/users.txt
+pause
+
+#ELIMINANDO GRUPOS
+rmgrp -name=mail
+cat -file=/users.txt
+pause
+
+#CREACION DE USUARIOS
+mkusr -usr="usuario1" -pass=password -grp=root
+mkusr -usr="user1" -pass=abc -grp=usuarios
+mkusr -usr="user2" -pass=abc -grp=usuarios
+cat -file=/users.txt
+pause
+
+#ELIMINANDO USUARIOS
+rmusr -usr=user2
+cat -file=/users.txt
+pause
+
+#CREACION DE CARPETAS
+mkdir -path=/bin
+mkdir -path=/boot
+mkdir -path=/cdrom
+mkdir -path=/dev
+mkdir -path=/etc
+mkdir -path=/home
+mkdir -path=/lib
+mkdir -path=/lib64
+mkdir -path=/media
+mkdir -path=/mnt
+mkdir -path=/opt
+mkdir -path=/proc
+mkdir -path=/run
+mkdir -path=/sbin
+mkdir -path=/snap
+mkdir -path=/srv
+mkdir -path=/sys
+mkdir -path=/tmp
+mkdir -path=/var
+mkdir -path="/home/archivos/archivos 19"
+mkdir -p -path=/home/archivos/user/docs/usac
+mkdir -p -path=/home/archivos/carpeta1/carpeta2/carpeta3/carpeta4/carpeta5
+
+#------------------------REPORTE 2----------------
+rep -id=131a -path="/home/archivos/reportes/reporte2_tree.jpg" -name=tree
+pause
+
+logout
+
+login -usr=usuario1 -pass=password -id=131a
+
+#CREACION DE ARCHIVOS
+mkfile -path=/home/archivos/user/docs/Tarea.txt -s=75
+mkfile -path=/home/archivos/user/docs/Tarea2.txt -s=1700
+#Para este comando hay que crear un archivo en la computadora y en cont poner la ruta de ese archivo
+#Crear un archivo txt en su escritorio llamado IA
+mkfile -path=/home/archivos/user/docs/Tarea3.txt -cont=/home/archivos/user/Desktop/IA.txt
+#Debe dar error porque la ruta no existe
+mkfile -path="/home/archivos/noexiste/b1.txt"
+#Debe dar error por s negativo
+mkfile -path="/home/archivos/b1.txt" -s=-45
+#Archivo con parametro -p
+mkfile -p -path=/home/archivos/user/docs/usac/archivos/proyectos/fase1/entrada.txt
+cat -file=/home/archivos/user/docs/Tarea2.txt
+cat -file=/home/archivos/user/docs/Tarea3.txt
+pause
+
+
+#------------------------REPORTE 3----------------
+rep -id=131a -path="/home/archivos/reportes/reporte3_tree.jpg" -name=tree
+pause
+
+#REMOVER
+rem -path=/home/archivos/user/docs/usac #Carpeta
+rem -path=/home/archivos/user/docs/Tarea.txt #Archivo
+
+#------------------------REPORTE 4----------------
+rep -id=131a -path="/home/archivos/reportes/reporte4_tree.jpg" -name=tree
+pause
+
+#MOVER
+mv -path=/home/archivos/user/docs/Tarea3.txt -dest=/home #archivo
+
+#------------------------REPORTES 5----------------
+#Reporte antes de la perdida
+rep -id=131a -path="/home/archivos/reportes/reporte5_inode.jpg" -name=inode
+rep -id=131a -path="/home/archivos/reportes/reporte5_block.pdf" -name=block
+rep -id=131a -path="/home/archivos/reportes/reporte5_bm_inode.txt" -name=bm_inode
+rep -id=131a -path="/home/archivos/reportes/reporte5_bm_block.txt" -name=bm_block
+rep -id=131a -path="/home/archivos/reportes/reporte5_tree.jpg" -name=tree
+rep -id=131a -path="/home/archivos/reportes/reporte5_sb.jpg" -name=sb
+rep -id=131a -path="/home/archivos/reportes/reporte5_journaling.jpg" -name=journaling
+rep -id=131a -path="/home/archivos/reportes/reporte5_file.jpg" -ruta=/home/archivos/Tarea3.txt -name=file
+rep -id=131a -path="/home/archivos/reportes/reporte5_ls.jpg" -ruta=/home/archivos/Tarea3.txt -name=ls
+pause
+
+loss -id=131a
+#------------------------REPORTES 6----------------
+#Reporte despues de la perdida
+rep -id=131a -path="/home/archivos/reportes/reporte6_inode.jpg" -name=inode
+rep -id=131a -path="/home/archivos/reportes/reporte6_block.pdf" -name=block
+rep -id=131a -path="/home/archivos/reportes/reporte6_bm_inode.txt" -name=bm_inode
+rep -id=131a -path="/home/archivos/reportes/reporte6_bm_block.txt" -name=bm_block
+rep -id=131a -path="/home/archivos/reportes/reporte6_tree.jpg" -name=tree
+rep -id=131a -path="/home/archivos/reportes/reporte6_sb.jpg" -name=sb
+rep -id=131a -path="/home/archivos/reportes/reporte6_journaling.jpg" -name=journaling
+pause
+
+recovery -id=131a
+#------------------------REPORTES 7----------------
+#Reportes despues del recovery
+rep -id=131a -path="/home/archivos/reportes/reporte7_inode.jpg" -name=inode
+rep -id=131a -path="/home/archivos/reportes/reporte7_block.jpg" -name=block
+rep -id=131a -path="/home/archivos/reportes/reporte7_bm_inode.txt" -name=bm_inode
+rep -id=131a -path="/home/archivos/reportes/reporte7_bm_block.txt" -name=bm_block
+rep -id=131a -path="/home/archivos/reportes/reporte7_tree.jpg" -name=tree
+rep -id=131a -path="/home/archivos/reportes/reporte7_sb.jpg" -name=sb
+rep -id=131a -path="/home/archivos/reportes/reporte7_journaling.jpg" -name=journaling
+pause
+
+logout
+
+login -usr=root -pass=123 -id=131a
+
+#CHMOD cambio de permisos
+chmod -r -path="/home/archivos/archivos 19" -ugo=001
+chmod -path="/home/archivos/user/docs/Tarea2.txt" -ugo=001
+
+logout
+
+LOGIN -usr=usuario1 -pwd=password -id=131a
+#No debe dejar por permisos de escritura
+mkdir -p -path="/home/archivos/archivos 19/no/tiene/que/hacerla/por/permisos"
+#No debe dejar por permisos de lectura
+cat -file=/home/archivos/user/docs/Tarea2.txt
+pause
+
+#Reportes despues de loss
+rep -id=131a -path=/home/archivos/reports/inodeReport_loss.jpg -name=inode
+rep -id=131a -path=/home/archivos/reports/blockReport_loss.jpg -name=block
+rep -id=131a -path=/home/archivos/reports/tree_report_loss.jpg -name=tree
+rep -id=131a -path=/home/archivos/reports/bm_block_report_loss.txt -name=bm_block
+rep -id=131a -path=/home/archivos/reports/bm_inode_report_loss.txt -name=bm_inode
+rep -id=131a -path=/home/archivos/reports/super_report_loss.jpg -name=sb
+rep -id=131a -path=/home/archivos/reports/journal_report.jpg -name=journaling
+pause
+
+#Reportes despues de recovery
+rep -id=131a -path=/home/archivos/reports/inodeReport_recovery.jpg -name=inode
+rep -id=131a -path=/home/archivos/reports/blockReport_recovery.jpg -name=block
+rep -id=131a -path=/home/archivos/reports/tree_report_recovery.jpg -name=tree
+rep -id=131a -path=/home/archivos/reports/bm_block_report_recovery.txt -name=bm_block
+rep -id=131a -path=/home/archivos/reports/bm_inode_report_recovery.txt -name=bm_inode
+rep -id=131a -path=/home/archivos/reports/super_report_recovery.jpg -name=sb
+rep -id=131a -path=/home/archivos/reports/journal_report_recovery.jpg -name=journaling
+
